@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+
+  db:
+    image: postgres:9.6-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD:
+        zaqwsx
+      POSTGRES_USER:
+        developer
+
+  redis:
+    image:
+      redis:4-alpine
+    ports:
+      - 6379:6379
+    volumes:
+      - ./data/redis:/data
+    command:
+      redis-server --appendonly yes
