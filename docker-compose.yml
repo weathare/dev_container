@@ -23,3 +23,12 @@ services:
       - ./data/redis:/data
     command:
       redis-server --appendonly yes
+
+  redisComander:
+    image: tenstartups/redis-commander
+    ports:
+      - 8081:8081
+    command:
+      --redis-host redis
+    links:
+      - redis:redis
